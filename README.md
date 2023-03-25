@@ -21,7 +21,7 @@ numbers back to roman numerals to check their accuracy.
 - M = 1000
 ```
 
-###There are four basic rules for creating roman numerals:
+### There are four basic rules for creating roman numerals:
 ```
 1. Normally, values are combined by adding the values of the symbol together.
 For example, III = 3, VII = 7, CLXV = 165.

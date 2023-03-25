@@ -198,7 +198,7 @@ def convert_numbers(number):
         return 'I'*number
     
 
-def main():
+if __name__ == "__main__":
     print("\nWelcome to Roman Numeral Converter!\n- Input either a Number or a Roman Numeral to switch it's type.\n- Enter 'q' to quit.")
 
     while True:
@@ -215,5 +215,3 @@ def main():
         print(f"Result: {result}\n")
         
     print(f'Come back Soon!\n')
-
-main()

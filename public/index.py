@@ -14,6 +14,8 @@ def check_valid(numeral):
     True
     >>> check_valid('IX')
     True
+    >>> check_valid('IL')
+    False
     >>> check_valid('VX')
     False
     >>> check_valid('XL')
@@ -30,8 +32,13 @@ def check_valid(numeral):
     True
     >>> check_valid('DM')
     False
-    """
+    """    
     numer_list = [i for i in numeral]
+    
+    # check individual letters to see if they are keys
+    for i in numer_list:
+        if i not in numers_dict:
+            return False
     
     def recurse(list_numerals):
         """
@@ -52,16 +59,12 @@ def check_valid(numeral):
             if list_numerals[0] == 'V' or list_numerals[0] == 'L' or list_numerals[0] == 'D':
                 return False
             
+            # other cases
+            if (first * 10) + 1 < second:
+                return False
             return recurse(list_numerals[2:])
 
     return recurse(numer_list)
-
-
-print(check_valid('IV'))
-print(check_valid('IX'))
-print(check_valid('VX'))
-print(check_valid('XL'))
-
 
 
 def convert_numerals(numeral):
@@ -99,3 +102,56 @@ def convert_numerals(numeral):
             return x + recurse(list_numerals[2:])
     
     return recurse(numer_list)
+
+def parse_type():
+    """
+    Takes user input, and checks to see if it is a valid type. 
+    If it is a valid input, return the input in the correct type.
+    If it is not a valid input, returns false.
+
+    **Special: if input is a Roman Numeral, check to see if it is a valid Roman Numeral.
+    
+    For the doctests, the parameters passed in are just examples of inputs the user could choose.
+    >>> parse_type('IV')
+    'IV'
+    >>> parse_type('1234')
+    1234
+    >>> parse_type('12a1')
+    False
+    >>> parse_type('dClXv')
+    'DCLXV'
+    >>> parse_type('IL')
+    False
+    >>> parse_type('a')
+    """
+    while True:
+        u_input = input('Enter: ')
+
+        if u_input.isnumeric():
+            return u_input
+        elif u_input == 'q':
+            break
+        elif u_input.isalpha() and u_input.isupper():
+            if check_valid(u_input):
+                return u_input
+            pass
+        elif u_input.isalpha() and not u_input.isupper():
+            result = ''
+            for i in u_input:
+                result += i.upper()
+            if check_valid(result):
+                return result
+            pass
+        print(f"\nInvalid input type, please try again.\n")
+
+# def main():
+
+#     print("\nWelcome to Roman Numeral Converter!\nInput either a Number or a Roman Numeral to switch it's type.\n")
+#     while True:
+#         print(f"Enter 'q' to quit.\n")
+#         user_input = parse_type()
+
+#         if user_input == 'q':
+#             break
+        
+#     print(f'<<<Exit>>>\nCome back Soon!')

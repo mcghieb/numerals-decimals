@@ -7,6 +7,14 @@ numers_dict = { 'I' : 1,
                 'M' : 1000
                 }
 
+def check_valid_numeral(numeral):
+    """
+    Returns Boolean value corrresponding to if the Roman Numeral (numeral; passed in as a string) was written correctly.
+    >>> check_valid_numeral('LD')
+    False
+    >>> check_valid_numeral('')
+    """
+    
 
 def convert_numerals(numeral):
     """

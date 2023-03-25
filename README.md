@@ -5,7 +5,7 @@
 that I used to run the .exe file was powershell.
 
 ## NOTE:
-- I have never made a python file into an executable.
+- I have never made a python file into an executable, this was my first time.
 
 ## numerals-decimals instructions
 

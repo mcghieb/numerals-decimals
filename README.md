@@ -1,4 +1,13 @@
-# numerals-decimals
+# TIME SPENT ON CHALLENGE: 3 HOURS AND 23 MINUTES
+- I spent about 2.5-3 hours coding, and the rest of the time trying to learn how to convert a python file to an executable.
+- To convert the python file to an executable, I used the python library 'auto-py-to-exe'
+- I am not sure what files are necessary to include to make this accessible to all systems. I am using python 3.11.1, and the terminal
+that I used to run the .exe file was powershell.
+
+## NOTE:
+- I have never made a python file into an executable.
+
+## numerals-decimals instructions
 
 ```
 Last summer the archeology department excavated some ancient Roman ruins. They uncovered an old

@@ -149,28 +149,71 @@ def convert_numerals(numeral):
     return recurse(numer_list)
 
 
-def convert_number(number):
+def convert_numbers(number):
     """
     Returns a given number (type == int) to a Roman Numeral.
-    >>> convert_numerals(3)
+    >>> convert_numbers(3)
     III
-    >>> convert_numerals(7)
+    >>> convert_numbers(7)
     VII
-    >>> convert_numerals(165)
+    >>> convert_numbers(165)
     CLXV
-    >>> convert_numerals(3999)
+    >>> convert_numbers(3999)
     MMMCMXCIX
     """
-    return None
+    number = int(number)
+    if number >= 1000:
+        return 'M' + str(convert_numbers(number-1000))
+    if number >= 900:
+        return 'CM' + str(convert_numbers(number-900))
+    if number >= 500:
+        temp = number // 100
+        num_of_Cs = temp-5
+        return 'D' + 'C'*num_of_Cs + str(convert_numbers(number-(temp*100)))
+    if number >= 400:
+        return 'C' + 'D' + str(convert_numbers(number-400))
+    if number >= 100:
+        num_of_Cs = number // 100
+        return 'C'*num_of_Cs + str(convert_numbers(number-(num_of_Cs*100)))
+    if number >= 90:
+        return 'XC' + str(convert_numbers(number-90))
+    if number >= 50:
+        temp = number // 10
+        num_of_Xs = temp-5
+        return 'L' + 'X'*num_of_Xs + str(convert_numbers(number-(temp*10)))
+    if number >= 40:
+        return 'X' + 'L' + str(convert_numbers(number-40))
+    if number >= 10:
+        num_of_Xs = number // 10
+        return 'X'*num_of_Xs + str(convert_numbers(number-(num_of_Xs*10)))
+    if number == 9:
+        return 'IX'
+    if number >= 5:
+        temp = number // 1
+        num_of_Is = temp-5
+        return 'V' + 'I'*num_of_Is
+    if number == 4:
+        return 'IV'
+    if number >= 1:
+        return 'I'*number
+    
 
 def main():
-    print("\nWelcome to Roman Numeral Converter!\nInput either a Number or a Roman Numeral to switch it's type.\n")
+    print("\nWelcome to Roman Numeral Converter!\n- Input either a Number or a Roman Numeral to switch it's type.\n- Enter 'q' to quit.")
 
     while True:
-        print(f"Enter 'q' to quit.\n")
+        result = None
         user_input = parse_type()
 
-        if user_input == 'q':
+        if user_input == None:
             break
+        if user_input.isnumeric():
+            result = convert_numbers(user_input)
+        if user_input.isalpha():
+            result = convert_numerals(user_input)
         
-    print(f'<<<Exit>>>\nCome back Soon!')
+        print(f"Result: {result}\n")
+        
+    print(f'Come back Soon!\n')
+
+main()

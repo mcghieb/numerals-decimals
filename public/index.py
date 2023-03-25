@@ -7,6 +7,7 @@ numers_dict = { 'I' : 1,
                 'M' : 1000
                 }
 
+
 def convert_numerals(numeral):
     """
     Returns a given Roman Numeral (numeral; passed in as a string) to a Decimal Number.
@@ -28,20 +29,24 @@ def convert_numerals(numeral):
         # base cases
         if len(list_numerals) == 1:
             return numers_dict[list_numerals[0]]
+        if len(list_numerals) < 1:
+            return 0
         
         # normal descending numeral case
         if numers_dict[list_numerals[0]] >= numers_dict[list_numerals[1]]:
-            return numers_dict[list_numerals[0]] + recurse(list_numerals[1:])
+            x = numers_dict[list_numerals[0]]
+            return x + recurse(list_numerals[1:])
         
-        # not working yet
-        # elif numers_dict[list_numerals[0]] <= numers_dict[list_numerals[1]]:
-        #     return numers_dict[list_numerals[1]] - numers_dict[list_numerals[0]] + recurse(list_numerals[2:])
-
+        # other cases
+        elif numers_dict[list_numerals[0]] <= numers_dict[list_numerals[1]]:
+            x = numers_dict[list_numerals[1]] - numers_dict[list_numerals[0]]
+            return x + recurse(list_numerals[2:])
+    
     return recurse(numer_list)
 
 # working test cases
-print(convert_numerals('I'))
-print(convert_numerals('CLXV'))
+# print(convert_numerals('I'))
+# print(convert_numerals('CLXV'))
 
 # broken test cases
-# print(convert_numerals('MMMCMXCIX'))
+print(convert_numerals('MMMCMXCIX'))

@@ -7,14 +7,62 @@ numers_dict = { 'I' : 1,
                 'M' : 1000
                 }
 
-def check_valid_numeral(numeral):
+def check_valid(numeral):
     """
     Returns Boolean value corrresponding to if the Roman Numeral (numeral; passed in as a string) was written correctly.
-    >>> check_valid_numeral('LD')
+    >>> check_valid('IV')
+    True
+    >>> check_valid('IX')
+    True
+    >>> check_valid('VX')
     False
-    >>> check_valid_numeral('')
+    >>> check_valid('XL')
+    True
+    >>> check_valid('XC')
+    True
+    >>> check_valid('XD')
+    False
+    >>> check_valid('LC')
+    False
+    >>> check_valid('CD')
+    True
+    >>> check_valid('CM')
+    True
+    >>> check_valid('DM')
+    False
     """
+    numer_list = [i for i in numeral]
     
+    def recurse(list_numerals):
+        """
+        helper recursive function for check_valid()
+        """
+        # base cases
+        if len(list_numerals) <= 1:
+            return True
+        if numers_dict[list_numerals[0]] >= numers_dict[list_numerals[1]]:
+            return recurse(list_numerals[2:])
+        
+        # other cases
+        else:
+            first = numers_dict[list_numerals[0]]
+            second = numers_dict[list_numerals[1]]
+
+            # case for any of the numerals that equate to 5 * n where n is any number
+            if list_numerals[0] == 'V' or list_numerals[0] == 'L' or list_numerals[0] == 'D':
+                return False
+            
+            return recurse(list_numerals[2:])
+
+    return recurse(numer_list)
+
+
+print(check_valid('IV'))
+print(check_valid('IX'))
+print(check_valid('VX'))
+print(check_valid('XL'))
+
+
 
 def convert_numerals(numeral):
     """
@@ -32,7 +80,7 @@ def convert_numerals(numeral):
 
     def recurse(list_numerals):
         """
-        helper recursive function for convert_numerals
+        helper recursive function for convert_numerals()
         """
         # base cases
         if len(list_numerals) == 1:
@@ -51,10 +99,3 @@ def convert_numerals(numeral):
             return x + recurse(list_numerals[2:])
     
     return recurse(numer_list)
-
-# working test cases
-# print(convert_numerals('I'))
-# print(convert_numerals('CLXV'))
-
-# broken test cases
-print(convert_numerals('MMMCMXCIX'))

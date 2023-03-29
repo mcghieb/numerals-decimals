@@ -7,7 +7,18 @@ that I used to run the .exe file was powershell.
 ## NOTE:
 - I have never made a python file into an executable, this was my first time.
 
-## numerals-decimals instructions
+### How to Get Started:
+- Clone this repository into your directory
+
+Windows:
+- Double Click on .exe file
+OR
+- Navigate to the working directory in a terminal
+- run the command ./romanNumeralConverter.exe
+
+
+
+## numerals-decimals challenge instructions
 
 ```
 Last summer the archeology department excavated some ancient Roman ruins. They uncovered an old

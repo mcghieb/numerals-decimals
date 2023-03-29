@@ -7,7 +7,7 @@ that I used to run the .exe file was powershell.
 ## NOTE:
 - I have never made a python file into an executable, this was my first time.
 
-### How to Get Started:
+## How to Get Started:
 - Clone this repository into your directory
 
 Windows:

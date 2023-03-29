@@ -95,7 +95,9 @@ def parse_type():
         u_input = input('Enter: ')
 
         if u_input.isnumeric():
-            return u_input
+            if int(u_input) < 4000:
+                return u_input
+            print(f"\nInput is too large.")
         elif u_input == 'q':
             break
         elif u_input.isalpha() and u_input.isupper():
@@ -109,7 +111,7 @@ def parse_type():
             if check_valid(result):
                 return result
             pass
-        print(f"\nInvalid input type, please try again.\n")
+        print(f"Invalid input, please try again.\n")
 
 
 def convert_numerals(numeral):
